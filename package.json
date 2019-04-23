@@ -1,0 +1,26 @@
+{
+  "name": "ChatRoom",
+  "version": "1.0.0",
+  "description": "A cool chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JairHuamanBellido/ChatRoom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JairHuamanBellido/ChatRoom/issues"
+  },
+  "homepage": "https://github.com/JairHuamanBellido/ChatRoom#readme",
+  "engines": {
+    "node": "10.15.3"
+  },
+  "dependencies": {
+    "express": "4.16.4"
+  }
+}
