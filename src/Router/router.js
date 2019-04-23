@@ -1,22 +1,24 @@
 const express = require('express');
-const router =  express.Router();
+const router = express.Router();
 
-router.get('/', async(req,res)=>{
+router.get('/', async (req, res) => {
     res.redirect('/login');
 })
 
-router.get('/login', async(req,res)=>{
+router.get('/login', async (req, res) => {
     res.render('login');
 })
 
 
-router.get('/chat', async(req,res)=>{
-    res.send('Esta en el chat');
+router.get('/chat', async (req, res) => {
+    if (req.session.username) { console.log('this is: ' + req.session.username) }
+    res.render('chat', { username: req.session.username });
 })
 
 
-router.post('/chat', async(req,res)=>{
+router.post('/chat', async (req, res) => {
+    req.session.username = req.body.username;
     res.redirect('/chat');
 })
 
-module.exports.router =  router;
+module.exports.router = router;

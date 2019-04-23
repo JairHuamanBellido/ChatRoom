@@ -5,8 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
+     <!-- AUTHOR -->
+    <!-- CHAT MADE BY JAIR HUAMAN BELLIDO -->
+    <link rel="stylesheet" href="../public/css/chat.css">
 </head>
 <body>
-        <h1>Bienvenido al chat</h1>
+        <h1>Bienvenido al chat <%= username %></h1>
+
+        <div class="field-chat">
+            <input type="text" placeholder="escribe algo">
+            <button>Enviar</button>
+        </div>
+
+        <div class="all-messages">
+
+
+
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="../public/js/chat.js"></script>
 </body>
 </html>
