@@ -12,7 +12,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: { secure: false }
   }))
 app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname,'views')));
