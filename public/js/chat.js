@@ -38,7 +38,7 @@ socket.on('New member', (data) => {
 
     newUserContainer.innerHTML = `
         <img src="${data.avatar}" width="32" height="32">
-        <p class="username-sb> ${data.username} </p>
+        <p class="username-sb"> ${data.username} </p>
     `;
 
     allUsersOnline.appendChild(newUserContainer);
