@@ -1,0 +1,104 @@
+@import "font.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+.flexCCC{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.flexCSC{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.flexCCR{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.flexSCC{
+    display: flex;
+
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+
+.container-login{
+    width: 100%;
+    height: 100vh;
+    background: url('/public/assets/Background.png');
+    background-position: center center;
+    background-size: cover;
+}
+.container-login form{
+    margin: 0 auto;
+}
+
+.avatar-img {
+    margin-top: 3.5em;
+}
+.avatar-img img{
+    border-radius: 50%;
+}
+
+.header-login *{
+    text-align: center;
+}
+.header-login h1{
+    font-family: proxNova;
+    color: #F56F98;
+}
+.header-login p{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #9697B8;
+}
+.field-login{
+    margin: 1.5em 0;
+}
+.field-login label{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+    color: #9697B8;
+}
+.field-login input{
+    margin-top: 12px;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 12px 16px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+}
+
+.field-login input:focus{
+    transition: all .2s ease-in-out;
+    border: 1px solid rgb(245, 111, 111);
+}
+form input[type="submit"]{
+    width: 300px;
+    padding: 12px 0;
+    background: #F56F98;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 3em;
+}
+::placeholder{
+    color: rgba(0,0,0,.46)
+}

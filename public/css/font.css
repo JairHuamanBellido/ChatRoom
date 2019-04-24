@@ -1,0 +1,6 @@
+@font-face{
+    font-family: proxNova;
+    src: url('/public/fonts/Proxima\ Nova\ Semibold.otf');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700');
