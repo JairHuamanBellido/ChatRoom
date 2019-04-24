@@ -15,7 +15,7 @@
     <h1 class="header-user" id="<%=username%>">Bienvenido al chat <%= username %></h1>
 
     <div class="field-chat">
-        <input id="field-message" type="text" placeholder="escribe un mensaje">
+        <input onkeypress="typeKeyboard(event)" id="field-message" type="text" placeholder="escribe un mensaje">
         <button onclick="sendMessage()">Enviar </button> 
     </div>
     <div id="container-message" class="all-messages">

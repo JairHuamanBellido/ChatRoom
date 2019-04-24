@@ -11,13 +11,18 @@ router.get('/login', async (req, res) => {
 
 
 router.get('/chat', async (req, res) => {
-    if (req.session.username) { console.log('this is: ' + req.session.username) }
-    res.render('chat', { username: req.session.username });
+    if (!req.session.username) {
+        res.redirect('/login');
+    }
+    else {
+        res.render('chat', { username: req.session.username });
+    }
 })
 
 
 router.post('/chat', async (req, res) => {
     req.session.username = req.body.username;
+
     res.redirect('/chat');
 })
 

@@ -5,6 +5,7 @@ const username = document.getElementsByClassName("header-user")[0].getAttribute(
 const sendMessage = () => {
     if (messageInput.value != "") {
         socket.emit('send message', { message: messageInput.value, username: username });
+        messageInput.value ="";
     }
 }
 
@@ -18,3 +19,9 @@ socket.on('display message', (data)=>{
 
     containerMessage.appendChild(messageContainer);
 })
+
+const typeKeyboard = (e)=>{
+    if(e.keyCode == 13){
+        sendMessage();
+    }
+}
