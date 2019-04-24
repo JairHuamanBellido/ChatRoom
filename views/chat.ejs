@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
-     <!-- AUTHOR -->
+    <!-- AUTHOR -->
     <!-- CHAT MADE BY JAIR HUAMAN BELLIDO -->
     <link rel="stylesheet" href="../public/css/chat.css">
 </head>
+
 <body>
-        <h1>Bienvenido al chat <%= username %></h1>
+    <h1 class="header-user" id="<%=username%>">Bienvenido al chat <%= username %></h1>
 
-        <div class="field-chat">
-            <input type="text" placeholder="escribe algo">
-            <button>Enviar</button>
-        </div>
-
-        <div class="all-messages">
-
+    <div class="field-chat">
+        <input id="field-message" type="text" placeholder="escribe un mensaje">
+        <button onclick="sendMessage()">Enviar </button> 
+    </div>
+    <div id="container-message" class="all-messages">
 
 
-        </div>
 
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="../public/js/chat.js"></script>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/js/chat.js"></script>
+
 </body>
+
 </html>
