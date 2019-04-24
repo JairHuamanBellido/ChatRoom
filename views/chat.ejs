@@ -12,17 +12,30 @@
 </head>
 
 <body>
-    <h1 class="header-user" id="<%=username%>">Bienvenido al chat <%= username %></h1>
 
-    <div class="field-chat">
-        <input onkeypress="typeKeyboard(event)" id="field-message" type="text" placeholder="escribe un mensaje">
-        <button onclick="sendMessage()">Enviar </button> 
+    <div class="container-chatpage">
+
+            <%- include('partials/sidebar'); -%>
+
+            <div class="container-chat">
+                <h1 class="header-user" id="<%=username%>">Bienvenido al chat <%= username %></h1>
+                <img id="myAvatar" src="<%=avatar%>" width="48" height="48" alt="">
+                <div class="field-chat">
+                    <input onkeypress="typeKeyboard(event)" id="field-message" type="text" placeholder="escribe un mensaje">
+                    <button onclick="sendMessage()">Enviar </button> 
+                </div>
+                <div id="container-message" class="all-messages">
+            
+            
+            
+                </div>
+
+            </div>
+
+
     </div>
-    <div id="container-message" class="all-messages">
 
 
-
-    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/public/js/chat.js"></script>

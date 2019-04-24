@@ -7,6 +7,8 @@ const router = require('./src/Router/router');
 const path = require('path')
 const io = require('socket.io')(server);
 
+const allUser = require('./src/db/allUser');
+
 
 app.use(session({
     secret: 'keyboard cat',
@@ -17,17 +19,34 @@ app.use(session({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'views')));
 
-app.use('/public', express.static('public'))
+app.use('/public', express.static('public'));
 app.set('view engine', 'ejs');
 
 
 app.use('/', router.router);
 
 io.on('connection', (socket) => {
-    socket.on('send message', (data)=>{
-        io.sockets.emit('display message',{message:data.message,username:data.username})
-        
+    socket.on('send message', (data) => {
+        io.sockets.emit('display message', { message: data.message, username: data.username })
+
     })
+
+    socket.on('I am in room', (data) => {
+
+        allUser.allUser.push({ id: socket.id, username: data.username, avatar: data.avatar });
+        
+        let userConected =  allUser.allUser.filter(user=> user.id != socket.id);
+        socket.broadcast.emit('New member', { username: data.username, id: socket.id, avatar: data.avatar });
+        socket.emit('get Users connected', {allUser: userConected});
+        
+
+    })
+
+    socket.on('disconnect', (data) => {
+        allUser.allUser = allUser.allUser.filter(user=>user.id != socket.id)
+        
+        socket.broadcast.emit('someone left', { username: socket.id })
+    });
 
 })
 

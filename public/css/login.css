@@ -38,6 +38,7 @@
     background: url('/public/assets/Background.png');
     background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
 }
 .container-login form{
     margin: 0 auto;
@@ -50,19 +51,7 @@
     border-radius: 50%;
 }
 
-.header-login *{
-    text-align: center;
-}
-.header-login h1{
-    font-family: proxNova;
-    color: #F56F98;
-}
-.header-login p{
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    color: #9697B8;
-}
+
 .field-login{
     margin: 1.5em 0;
 }

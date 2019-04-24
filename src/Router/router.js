@@ -15,14 +15,15 @@ router.get('/chat', async (req, res) => {
         res.redirect('/login');
     }
     else {
-        res.render('chat', { username: req.session.username });
+        res.render('chat', { username: req.session.username,avatar:req.session.avatar });
     }
 })
 
 
 router.post('/chat', async (req, res) => {
     req.session.username = req.body.username;
-
+    req.session.avatar =  req.body.avatar
+    
     res.redirect('/chat');
 })
 
