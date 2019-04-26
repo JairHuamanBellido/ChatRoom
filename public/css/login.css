@@ -87,6 +87,7 @@ form input[type="submit"]{
     border: none;
     border-radius: 4px;
     margin-top: 3em;
+    cursor: pointer;
 }
 ::placeholder{
     color: rgba(0,0,0,.46)

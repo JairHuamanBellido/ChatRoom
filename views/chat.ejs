@@ -18,13 +18,22 @@
             <%- include('partials/sidebar'); -%>
 
             <div class="container-chat">
-                <h1 class="header-user" id="<%=username%>">Bienvenido al chat <%= username %></h1>
-                <img id="myAvatar" src="<%=avatar%>" width="48" height="48" alt="">
-                <div class="field-chat">
-                    <input onkeypress="typeKeyboard(event)" id="field-message" type="text" placeholder="escribe un mensaje">
-                    <button onclick="sendMessage()">Enviar </button> 
+                <div class="header-chat">
+                    <img id="myAvatar" src="<%=avatar%>" width="48" height="48" alt="">
+                    <h3 class="header-user" id="<%=username%>"><%= username %></h3>
                 </div>
-                <div id="container-message" class="all-messages">
+
+                <div class="chat-screen">
+                    <div id="container-message" class="all-messages"></div>
+                    <div class="field-chat">
+                        <input onkeypress="typeKeyboard(event)" id="field-message" type="text" placeholder="Escribe un mensaje">
+                        <button onclick="sendMessage()">
+                            <img src="/public/assets/send-message-button.svg" alt="">
+                        </button> 
+                    </div>
+
+                </div>
+
             
             
             

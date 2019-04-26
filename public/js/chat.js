@@ -6,8 +6,9 @@ const urlAvatar = document.getElementById("myAvatar").getAttribute("src");
 const allUsersOnline = document.getElementsByClassName("all-user-connected")[0];
 const sendMessage = () => {
     if (messageInput.value != "") {
-        socket.emit('send message', { message: messageInput.value, username: username });
+        socket.emit('send message', { message: messageInput.value, username: username, avatar: urlAvatar });
         messageInput.value = "";
+        messageInput.focus();
     }
 }
 const typeKeyboard = (e) => {
@@ -25,10 +26,17 @@ socket.on('display message', (data) => {
     let messageContainer = document.createElement('div');
     messageContainer.setAttribute("class", "message-container");
     messageContainer.innerHTML = `
-        <p>${data.username}: ${data.message}</p>
+        <div class="message-avatar">
+            <img src="${data.avatar}" width="48" height="48">
+        </div>
+        <div class="message-info">
+            <h2>${data.username} </h2>
+            <p>${data.message}</p>
+        </div>
     `
 
-    containerMessage.appendChild(messageContainer);
+    containerMessage.insertBefore(messageContainer,containerMessage.firstChild);
+    console.log(containerMessage.firstChild);
 })
 
 socket.on('New member', (data) => {
@@ -37,7 +45,7 @@ socket.on('New member', (data) => {
     newUserContainer.setAttribute("class", data.username + " newUser");
 
     newUserContainer.innerHTML = `
-        <img src="${data.avatar}" width="32" height="32">
+        <img src="${data.avatar}" width="48" height="48">
         <p class="username-sb"> ${data.username} </p>
     `;
 

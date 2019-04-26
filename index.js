@@ -27,7 +27,7 @@ app.use('/', router.router);
 
 io.on('connection', (socket) => {
     socket.on('send message', (data) => {
-        io.sockets.emit('display message', { message: data.message, username: data.username })
+        io.sockets.emit('display message', { message: data.message, username: data.username, avatar:data.avatar })
 
     })
 

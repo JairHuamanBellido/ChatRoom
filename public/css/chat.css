@@ -5,19 +5,132 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
     
 }
+::placeholder{
+    color: rgba(0,0,0,.45);
+}
+
+/* ALL HEADER CHAT */
+
+
+.header-chat{
+    width: 100%;
+    height: 80px;
+
+    background: #7B72BB;
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+}
+.header-chat h3{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    margin-left: 24px;
+    font-size: 18px;
+}
+.header-chat img{
+    border-radius: 50%;
+
+}
+
+/* GLOBAL CONTAINER  */
+
 .container-chatpage{
     display: flex;
-
-
 }
-.all-messages{
-    height: 80vh;
+.container-chat{
+    width: 100%;
+    position: relative;
+}
+
+
+
+/* Chat Screen messages*/
+.chat-screen{
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    position: relative;
 }
+#container-message{
+    height: 90%;
+    overflow:auto;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 48px 128px;
+}
+
+
+/* MESSAGE Container*/
 .message-container p{
     color: #000000 !important;
     text-align: left;
+}
+
+.message-container{
+    display: flex;
+    margin: 16px 0;
+}
+.message-container .message-avatar{
+    margin: 0 16px;
+}
+.message-container .message-avatar img{
+    border-radius: 50%;
+}
+.message-container .message-info{
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 4px;
+}
+.message-container .message-info h2{
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    color: #000000;
+}
+.message-container .message-info p{
+    font-size: 16px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: rgba(0,0,0,.67);
+}
+
+
+
+/* INPUT CHAT */
+.field-chat{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.field-chat input{
+    width: 60%;
+    background: #F6F6F6;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 99999px;
+}
+.field-chat button{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #F56F98;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4em;
+    cursor: pointer;
 }
