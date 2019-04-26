@@ -63,7 +63,7 @@
     overflow:auto;
     display: flex;
     flex-direction: column-reverse;
-    padding: 48px 128px;
+    padding: 0 128px;
 }
 
 

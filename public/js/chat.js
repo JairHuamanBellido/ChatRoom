@@ -34,9 +34,10 @@ socket.on('display message', (data) => {
             <p>${data.message}</p>
         </div>
     `
-
+    console.log(containerMessage.scrollHeight);
     containerMessage.insertBefore(messageContainer,containerMessage.firstChild);
     console.log(containerMessage.firstChild);
+    containerMessage.scrollTop = (containerMessage.scrollHeight) -64;
 })
 
 socket.on('New member', (data) => {
