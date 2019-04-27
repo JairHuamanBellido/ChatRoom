@@ -75,8 +75,9 @@
 
 .message-container{
     display: flex;
-    margin: 16px 0;
+    width: fit-content;
 }
+
 .message-container .message-avatar{
     margin: 0 16px;
 }
@@ -102,6 +103,14 @@
     color: rgba(0,0,0,.67);
 }
 
+.myMessage{
+    margin: 16px 0 16px auto;
+    flex-direction: row-reverse;
+}
+.notMyMessage{
+    margin: 16px auto 16px 0;
+    flex-direction: row;
+}
 
 
 /* INPUT CHAT */

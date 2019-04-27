@@ -27,24 +27,24 @@ app.use('/', router.router);
 
 io.on('connection', (socket) => {
     socket.on('send message', (data) => {
-        io.sockets.emit('display message', { message: data.message, username: data.username, avatar:data.avatar })
+        io.sockets.emit('display message', { message: data.message, username: data.username, avatar: data.avatar, id:socket.id })
 
     })
 
     socket.on('I am in room', (data) => {
 
         allUser.allUser.push({ id: socket.id, username: data.username, avatar: data.avatar });
-        
-        let userConected =  allUser.allUser.filter(user=> user.id != socket.id);
+
+        let userConected = allUser.allUser.filter(user => user.id != socket.id);
         socket.broadcast.emit('New member', { username: data.username, id: socket.id, avatar: data.avatar });
-        socket.emit('get Users connected', {allUser: userConected});
-        
+        socket.emit('set All Data', { allUser: userConected, id:socket.id });
+
 
     })
 
     socket.on('disconnect', (data) => {
-        allUser.allUser = allUser.allUser.filter(user=>user.id != socket.id)
-        
+        allUser.allUser = allUser.allUser.filter(user => user.id != socket.id)
+
         socket.broadcast.emit('someone left', { username: socket.id })
     });
 

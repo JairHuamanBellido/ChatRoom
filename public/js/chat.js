@@ -1,9 +1,18 @@
+let socketId;
 let socket = io();
 const messageInput = document.getElementById('field-message');
 const containerMessage = document.getElementById('container-message');
 const username = document.getElementsByClassName("header-user")[0].getAttribute("id");
 const urlAvatar = document.getElementById("myAvatar").getAttribute("src");
 const allUsersOnline = document.getElementsByClassName("all-user-connected")[0];
+
+
+
+
+
+
+
+// ALL FUNCTIONS DOM
 const sendMessage = () => {
     if (messageInput.value != "") {
         socket.emit('send message', { message: messageInput.value, username: username, avatar: urlAvatar });
@@ -17,14 +26,27 @@ const typeKeyboard = (e) => {
     }
 }
 
+const isMyMessage = (id)=>{
+    return (id === socketId);
+}
+
+
+
+
+
+
+
+
+
 socket.emit('I am in room', { username: username, avatar: urlAvatar })
 
 
+
+
+
 socket.on('display message', (data) => {
-    console.log("Username: " + data.username);
-    console.log("Mensaje : " + data.message);
+
     let messageContainer = document.createElement('div');
-    messageContainer.setAttribute("class", "message-container");
     messageContainer.innerHTML = `
         <div class="message-avatar">
             <img src="${data.avatar}" width="48" height="48">
@@ -33,10 +55,17 @@ socket.on('display message', (data) => {
             <h2>${data.username} </h2>
             <p>${data.message}</p>
         </div>
-    `
-    console.log(containerMessage.scrollHeight);
-    containerMessage.insertBefore(messageContainer,containerMessage.firstChild);
-    console.log(containerMessage.firstChild);
+    `;
+    
+    if(isMyMessage(data.id)){
+        messageContainer.setAttribute("class", "message-container myMessage");
+    }
+    else{
+        messageContainer.setAttribute("class", "message-container notMyMessage");
+    }
+
+
+    containerMessage.insertBefore(messageContainer,containerMessage.firstChild);    
     containerMessage.scrollTop = (containerMessage.scrollHeight) -64;
 })
 
@@ -55,11 +84,12 @@ socket.on('New member', (data) => {
 
 })
 
-socket.on('get Users connected', (data) => {
-    console.log(data.allUser);
+socket.on('set All Data', (data) => {
+  
+    // Get ID SOCKET
+    socketId = data.id;
 
     data.allUser.reduce((prev, actual) => {
-        console.log(actual.avatar)
         let newUserContainer = document.createElement('div');
         newUserContainer.setAttribute("id", actual.id);
         newUserContainer.setAttribute("class", actual.username + " newUser");
@@ -82,3 +112,4 @@ socket.on('someone left', (data) => {
     console.log(data.username + " salió");
     document.getElementById(data.username).remove();
 })
+
