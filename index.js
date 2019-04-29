@@ -47,6 +47,7 @@ io.on('connection', (socket) => {
 
         socket.broadcast.emit('someone left', { username: socket.id })
     });
+    
 
 })
 

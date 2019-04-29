@@ -31,18 +31,7 @@ const isMyMessage = (id)=>{
 }
 
 
-
-
-
-
-
-
-
 socket.emit('I am in room', { username: username, avatar: urlAvatar })
-
-
-
-
 
 socket.on('display message', (data) => {
 
@@ -54,11 +43,23 @@ socket.on('display message', (data) => {
         <div class="message-info">
             <h2>${data.username} </h2>
             <p>${data.message}</p>
+            <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
         </div>
     `;
     
     if(isMyMessage(data.id)){
         messageContainer.setAttribute("class", "message-container myMessage");
+        messageContainer.innerHTML =`
+            <div class="message-avatar">
+                <img src="${data.avatar}" width="48" height="48">
+            </div>
+
+            <div class="message-info">
+                <p>${data.message}</p>
+                <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+            </div>
+
+        `
     }
     else{
         messageContainer.setAttribute("class", "message-container notMyMessage");
