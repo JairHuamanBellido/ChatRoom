@@ -9,6 +9,15 @@ const io = require('socket.io')(server);
 
 const allUser = require('./src/db/allUser');
 
+// Colors
+// #f34e4e
+//#4e8df3
+//#c54ef3
+//#51a7a4
+//#52bf57
+//#02a73f
+
+
 
 app.use(session({
     secret: 'keyboard cat',
