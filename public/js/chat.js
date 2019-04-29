@@ -1,4 +1,5 @@
 let socketId;
+let lastIdSocket;
 let socket = io();
 const messageInput = document.getElementById('field-message');
 const containerMessage = document.getElementById('container-message');
@@ -35,6 +36,7 @@ socket.emit('I am in room', { username: username, avatar: urlAvatar })
 
 socket.on('display message', (data) => {
 
+
     let messageContainer = document.createElement('div');
     messageContainer.innerHTML = `
         <div class="message-avatar">
@@ -47,6 +49,10 @@ socket.on('display message', (data) => {
         </div>
     `;
     
+    if(lastIdSocket === data.id){
+        console.log("Mensaje repetido del mismo usuario");
+    }    
+
     if(isMyMessage(data.id)){
         messageContainer.setAttribute("class", "message-container myMessage");
         messageContainer.innerHTML =`
@@ -64,6 +70,7 @@ socket.on('display message', (data) => {
     else{
         messageContainer.setAttribute("class", "message-container notMyMessage");
     }
+    lastIdSocket = data.id;
 
 
     containerMessage.insertBefore(messageContainer,containerMessage.firstChild);    
