@@ -11,8 +11,6 @@ const allUsersOnline = document.getElementsByClassName("all-user-connected")[0];
 
 
 
-
-
 // ALL FUNCTIONS DOM
 const sendMessage = () => {
     if (messageInput.value != "") {
@@ -27,35 +25,52 @@ const typeKeyboard = (e) => {
     }
 }
 
-const isMyMessage = (id)=>{
+const isMyMessage = (id) => {
     return (id === socketId);
 }
 
 
 socket.emit('I am in room', { username: username, avatar: urlAvatar })
 
+
+
 socket.on('display message', (data) => {
 
 
     let messageContainer = document.createElement('div');
-    messageContainer.innerHTML = `
-        <div class="message-avatar">
-            <img src="${data.avatar}" width="48" height="48">
-        </div>
-        <div class="message-info">
-            <h2>${data.username} </h2>
-            <p>${data.message}</p>
-            <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
-        </div>
-    `;
-    
-    if(lastIdSocket === data.id){
-        console.log("Mensaje repetido del mismo usuario");
-    }    
 
-    if(isMyMessage(data.id)){
-        messageContainer.setAttribute("class", "message-container myMessage");
-        messageContainer.innerHTML =`
+    if (lastIdSocket === data.id) {
+
+        if (isMyMessage(data.id)) {
+            messageContainer.setAttribute("class", "message-container myMessageRepeat");
+            messageContainer.innerHTML = `
+            
+                <div class="message-info">
+                    <p>${data.message}</p>
+                    <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+                </div>
+    
+            `
+        }
+        else {
+            messageContainer.setAttribute("class", "message-container notMyMessageRepeat");
+            messageContainer.innerHTML = `
+                <div class="message-info">
+                    <h2>${data.username} </h2>
+                    <p>${data.message}</p>
+                    <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+                </div>    
+            `
+        }
+
+
+
+    }
+    else {
+
+        if (isMyMessage(data.id)) {
+            messageContainer.setAttribute("class", "message-container myMessage");
+            messageContainer.innerHTML = `
             <div class="message-avatar">
                 <img src="${data.avatar}" width="48" height="48">
             </div>
@@ -66,15 +81,31 @@ socket.on('display message', (data) => {
             </div>
 
         `
+        }
+        else{
+            messageContainer.setAttribute("class", "message-container notMyMessage");
+            messageContainer.innerHTML = `
+            <div class="message-avatar">
+                <img src="${data.avatar}" width="48" height="48">
+            </div>
+
+            <div class="message-info">
+                <h2>${data.username} </h2>
+                <p>${data.message}</p>
+                <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+            </div>
+
+        `
+        }
     }
-    else{
-        messageContainer.setAttribute("class", "message-container notMyMessage");
-    }
+
+
+
     lastIdSocket = data.id;
 
 
-    containerMessage.insertBefore(messageContainer,containerMessage.firstChild);    
-    containerMessage.scrollTop = (containerMessage.scrollHeight) -64;
+    containerMessage.insertBefore(messageContainer, containerMessage.firstChild);
+    containerMessage.scrollTop = (containerMessage.scrollHeight) - 64;
 })
 
 socket.on('New member', (data) => {
@@ -92,8 +123,8 @@ socket.on('New member', (data) => {
 
 })
 
-socket.on('set All Data', (data) => {
-  
+socket.on('set All Data', async (data) => {
+
     // Get ID SOCKET
     socketId = data.id;
 
@@ -110,7 +141,9 @@ socket.on('set All Data', (data) => {
         allUsersOnline.appendChild(newUserContainer);
 
 
-    }, "")
+    }, "");
+
+
 
 })
 

@@ -23,7 +23,7 @@ router.get('/chat', async (req, res) => {
 router.post('/chat', async (req, res) => {
     req.session.username = req.body.username;
     req.session.avatar =  req.body.avatar
-    
+
     res.redirect('/chat');
 })
 
