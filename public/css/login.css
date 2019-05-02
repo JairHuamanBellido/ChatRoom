@@ -35,10 +35,7 @@
 .container-login{
     width: 100%;
     height: 100vh;
-    background: url('/public/assets/Background.png');
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
+    
 }
 .container-login form{
     margin: 0 auto;
