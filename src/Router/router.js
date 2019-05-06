@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/',  (req, res) => {
     res.redirect('/login');
 })
 
-router.get('/login', async (req, res) => {
+router.get('/login',  (req, res) => {
     res.render('login');
 })
 
 
-router.get('/chat', async (req, res) => {
+router.get('/chat',  (req, res) => {
     if (!req.session.username) {
         res.redirect('/login');
     }
@@ -20,11 +20,17 @@ router.get('/chat', async (req, res) => {
 })
 
 
-router.post('/chat', async (req, res) => {
+router.post('/chat',  (req, res) => {
     req.session.username = req.body.username;
     req.session.avatar =  req.body.avatar
 
     res.redirect('/chat');
+})
+
+router.post('/logout', (req,res)=>{
+    req.session.username = null || undefined;
+    req.session.avatar = null || undefined;
+    res.redirect('/login');
 })
 
 module.exports.router = router;

@@ -12,7 +12,7 @@ const allUsersOnline = document.getElementsByClassName("all-user-connected")[0];
 const addZeroTime = (time)=>{
 
 
-    return(time<10)? `0${time}`:time;
+    return(time<10)? '0'+time:time;
 }
 
 
@@ -42,9 +42,8 @@ socket.emit('I am in room', { username: username, avatar: urlAvatar })
 
 socket.on('display message', (data) => {
 
-
     let messageContainer = document.createElement('div');
-
+  
     if (lastIdSocket === data.id) {
 
         if (isMyMessage(data.id)) {
@@ -53,7 +52,7 @@ socket.on('display message', (data) => {
             
                 <div class="message-info">
                     <p>${data.message}</p>
-                    <p class="timeMessage">${addZeroTime(new Date().getHours())}:${addZeroTime(new Date().getMinutes())}</p>
+                    <p class="timeMessage">${new Date().getHours()}:${addZeroTime(new Date().getMinutes())}</p>
                 </div>
     
             `
@@ -64,9 +63,11 @@ socket.on('display message', (data) => {
                 <div class="message-info">
                     <h2>${data.username} </h2>
                     <p>${data.message}</p>
-                    <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+                    <p class="timeMessage">${new Date().getHours()}:${addZeroTime(new Date().getMinutes())}</p>
                 </div>    
             `
+            document.getElementById("lastMessageOf"+data.id).textContent=data.message;
+
         }
 
 
@@ -83,7 +84,7 @@ socket.on('display message', (data) => {
 
             <div class="message-info">
                 <p>${data.message}</p>
-                <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+                <p class="timeMessage">${new Date().getHours()}:${addZeroTime(new Date().getMinutes())}</p>
             </div>
 
         `
@@ -98,13 +99,14 @@ socket.on('display message', (data) => {
             <div class="message-info">
                 <h2>${data.username} </h2>
                 <p>${data.message}</p>
-                <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+                <p class="timeMessage">${new Date().getHours()}:${addZeroTime(new Date().getMinutes())}</p>
             </div>
 
         `
+        document.getElementById("lastMessageOf"+data.id).textContent=data.message;
+
         }
     }
-
 
 
     lastIdSocket = data.id;
@@ -121,7 +123,10 @@ socket.on('New member', (data) => {
 
     newUserContainer.innerHTML = `
         <img src="${data.avatar}" width="48" height="48">
+        <div class="username-status">
         <p class="username-sb"> ${data.username} </p>
+        <p class="lastMessageUser" id="lastMessageOf${data.id}"></p>
+        </div>
     `;
 
     allUsersOnline.appendChild(newUserContainer);
@@ -141,7 +146,10 @@ socket.on('set All Data', async (data) => {
 
         newUserContainer.innerHTML = `
             <img src="${actual.avatar}" width="48" height="48">
+            <div class="username-status">
             <p class="username-sb"> ${actual.username} </p>
+            <p class="lastMessageUser" id="lastMessageOf${actual.id}"></p>
+            </div>
         `;
 
         allUsersOnline.appendChild(newUserContainer);

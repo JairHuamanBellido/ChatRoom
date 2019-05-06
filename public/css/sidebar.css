@@ -42,10 +42,49 @@
     font-size: 16px;
     color: #494c65;
     font-weight: 400;
-    margin-left: 16px;
     font-weight: 700;
+    text-align: left;
 }
 .all-user-connected{
-    height: 65vh;
+    height: 60vh;
     overflow: auto;
+}
+
+#form-logout{
+    width: fit-content;
+
+    margin: 0 auto;
+}
+
+#btn-logout{
+    padding: 12px 8px;
+    width: 200px;
+    border-radius: 999999px;
+    border: none;
+    background: rgb(250, 101, 124);
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+#btn-logout:focus{
+    transition: all .2s ease-in-out;
+    transform: scale(.85);
+}
+.username-status{
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+    width: 100% ;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.lastMessageUser{
+    font-size: 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

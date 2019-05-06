@@ -11,10 +11,10 @@ const allUser = require('./src/db/allUser');
 
 
 
-const colors = ["#f34e4e","#4e8df3", "#c54ef3","#51a7a4","#52bf57","#02a73f"]
+// const colors = ["#f34e4e","#4e8df3", "#c54ef3","#51a7a4","#52bf57","#02a73f"]
 
 
-console.log( Math.ceil(Math.random()*1 +5));
+// console.log( Math.ceil(Math.random()*1 +5));
 
 app.use(session({
     secret: 'keyboard cat',
