@@ -67,9 +67,9 @@
     cursor: pointer;
     
 }
-#btn-logout:focus{
+#btn-logout:active{
     transition: all .2s ease-in-out;
-    transform: scale(.85);
+    transform: scale(.95);
 }
 .username-status{
     display: flex;
