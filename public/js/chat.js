@@ -8,6 +8,12 @@ const urlAvatar = document.getElementById("myAvatar").getAttribute("src");
 const allUsersOnline = document.getElementsByClassName("all-user-connected")[0];
 
 
+//AddZero   
+const addZeroTime = (time)=>{
+
+
+    return(time<10)? `0${time}`:time;
+}
 
 
 
@@ -47,7 +53,7 @@ socket.on('display message', (data) => {
             
                 <div class="message-info">
                     <p>${data.message}</p>
-                    <p class="timeMessage">${new Date().getHours()}:${new Date().getMinutes()}</p>
+                    <p class="timeMessage">${addZeroTime(new Date().getHours())}:${addZeroTime(new Date().getMinutes())}</p>
                 </div>
     
             `
