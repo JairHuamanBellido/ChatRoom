@@ -2,8 +2,6 @@
     width: 400px;
     height: 100vh;
     display: flex;
-    padding: 24px 32px;
-    display: flex;
     justify-content: center;
     position: relative;
     background: #fafafa;
@@ -13,7 +11,9 @@
 .header-side-bar{
     width: 100%;
 }
-
+.body-sidebar{
+    margin: 0 24px;
+}
 .h2-user-connected{
     margin:1em 0;
     font-family: 'Nunito Sans', sans-serif;
