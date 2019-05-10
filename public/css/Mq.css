@@ -32,3 +32,15 @@
         margin: 0 8px 0 0 !important;
     }
 }
+
+@media (max-width:1280px){
+    .container-header{
+        height: 30vh !important;
+    }
+    .body-sidebar{
+        height: 50vh !important;
+    }
+    #form-logout{
+        height: 20vh !important;
+    }
+}

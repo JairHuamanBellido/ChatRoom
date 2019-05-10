@@ -19,31 +19,26 @@
 
     <div class="container-chatpage">
 
-            <%- include('partials/sidebar'); -%>
+        <%- include('partials/sidebar'); -%>
 
-            <div class="container-chat">
-                <div class="header-chat" id="">
-                    <img id="myAvatar" src="<%=avatar%>" width="48" height="48" alt="">
-                    <h3 class="header-user" id="<%=username%>"><%= username %></h3>
-                </div>
-
-                <div class="chat-screen">
-                    <div id="container-message" class="all-messages"></div>
-                    <div class="field-chat">
-                        <input autofocus onkeypress="typeKeyboard(event)" id="field-message" type="text" placeholder="Escribe un mensaje">
-                        <button onclick="sendMessage()">
-                            <img src="/public/assets/send-message-button.svg" alt="">
-                        </button> 
-                    </div>
-
-                </div>
-
-            
-            
-            
-                </div>
-
+        <div class="container-chat">
+            <div class="header-chat" id="">
+                <img id="myAvatar" src="<%=avatar%>" width="48" height="48" alt="">
+                <h3 class="header-user" id="<%=username%>"><%= username %></h3>
             </div>
+
+            <div class="chat-screen">
+                <div id="container-message" class="all-messages"></div>
+                <div class="field-chat">
+                    <input autofocus onkeypress="typeKeyboard(event)" id="field-message" type="text"
+                        placeholder="Escribe un mensaje">
+                    <button onclick="sendMessage()">
+                        <img src="/public/assets/send-message-button.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     </div>
